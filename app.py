@@ -92,25 +92,25 @@ if st.selectbox('Tools', ['Randomizing Tool', 'Drawing Tool']) == 'Randomizing T
 #data = load_data()
 
 
-if canvas_result.image_data is not None:
-    # img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
-    # rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
-    # st.write('Model Input')
-    # st.image(rescaled)
-    img = canvas_result.image_data
+# if canvas_result.image_data is not None:
+#     # img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
+#     # rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
+#     # st.write('Model Input')
+#     # st.image(rescaled)
+#     img = canvas_result.image_data
 
-    image = Image.fromarray((img[:, :, 0]).astype(np.uint8))
-    image = image.resize((28, 28))
-    image = image.convert('L')
-    image = (tf.keras.utils.img_to_array(image)/255)
-    image = image.reshape(1,28,28,1)
-    test_x = tf.convert_to_tensor(image)
+#     image = Image.fromarray((img[:, :, 0]).astype(np.uint8))
+#     image = image.resize((28, 28))
+#     image = image.convert('L')
+#     image = (tf.keras.utils.img_to_array(image)/255)
+#     image = image.reshape(1,28,28,1)
+#     test_x = tf.convert_to_tensor(image)
 
-if st.button('Predict'):
-    #test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    val = model.predict(test_x)
-    st.write(f'result: {np.argmax(val[0])}')  
-    #st.bar_chart(val[0])
+# if st.button('Predict'):
+#     #test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+#     val = model.predict(test_x)
+#     st.write(f'result: {np.argmax(val[0])}')  
+#     #st.bar_chart(val[0])
 
 
 
