@@ -26,7 +26,7 @@ def viz_num(num):
 
 ### Load / Preprocess / Predict test.csv dataset ###
 
-MODEL_DIR = os.path.join(os.path.dirname('__file__'), 'model.h5')
+MODEL_DIR = os.path.join(os.path.dirname('__file__'), 'modelD.h5')
 model = keras.models.load_model(MODEL_DIR)
 
 ###### STREAMLIT ######
