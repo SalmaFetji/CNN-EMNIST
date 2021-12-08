@@ -13,7 +13,7 @@ from streamlit_drawable_canvas import st_canvas
 
 from random import randrange
 
-#MODEL_DIR = os.path.join(os.path.dirname('__file__'), 'first_model.h5')
+#MODEL_DIR = os.path.join(os.path.dirname('__file__'), 'model.h5')
 
 ### Visualization function ###
 def viz_num(num):
@@ -30,7 +30,7 @@ def viz_num(num):
 
 ### Load / Preprocess / Predict test.csv dataset ###
 
-MODEL_DIR = os.path.join(os.path.dirname('__file__'), 'first_model.h5')
+MODEL_DIR = os.path.join(os.path.dirname('__file__'), 'model.h5')
 model = keras.models.load_model(MODEL_DIR)
 
 ###### STREAMLIT ######
