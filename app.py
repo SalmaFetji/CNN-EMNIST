@@ -36,17 +36,17 @@ Try to write a digit!
 # data = np.random.rand(28,28)
 # img = cv2.resize(data, (256, 256), interpolation=cv2.INTER_NEAREST)
 
-SIZE = 192
-mode = st.checkbox("Draw (or Delete)?", True)
-canvas_result = st_canvas(
-    fill_color='#000000',
-    stroke_width=20,
-    stroke_color='#FFFFFF',
-    background_color='#000000',
-    width=SIZE,
-    height=SIZE,
-    drawing_mode="freedraw" if mode else "transform",
-    key='canvas')
+# SIZE = 192
+# mode = st.checkbox("Draw (or Delete)?", True)
+# canvas_result = st_canvas(
+#     fill_color='#000000',
+#     stroke_width=20,
+#     stroke_color='#FFFFFF',
+#     background_color='#000000',
+#     width=SIZE,
+#     height=SIZE,
+#     drawing_mode="freedraw" if mode else "transform",
+#     key='canvas')
 
 # if canvas_result.image_data is not None:
 #     # img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
@@ -87,7 +87,42 @@ if st.selectbox('Tools', ['Randomizing Tool', 'Drawing Tool']) == 'Randomizing T
             st.write('Picture number ' + str(random_number))
             st.write('Predicted number : ' + str(pred_testing[random_number]))
             viz = viz_num(random_number)
-            st.pyplot(viz) 
+            st.pyplot(viz)
+else: 
+    SIZE = 192
+    mode = st.checkbox("Draw (or Delete)?", True)
+    canvas_result = st_canvas(
+    fill_color='#000000',
+    stroke_width=20,
+    stroke_color='#FFFFFF',
+    background_color='#000000',
+    width=SIZE,
+    height=SIZE,
+    drawing_mode="freedraw" if mode else "transform",
+    key='canvas')
+    
+    
+    if canvas_result.image_data is not None:
+    # img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
+    # rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
+    # st.write('Model Input')
+    # st.image(rescaled)
+        img = canvas_result.image_data
+
+        image = Image.fromarray((img[:, :, 0]).astype(np.uint8))
+        image = image.resize((28, 28))
+        image = image.convert('L')
+        image = (tf.keras.utils.img_to_array(image)/255)
+        image = image.reshape(1,28,28,1)
+        test_x = tf.convert_to_tensor(image)
+
+    if st.button('Predict'):
+    #test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        val = model.predict(test_x)
+        st.write(f'result: {np.argmax(val[0])}')  
+    #st.bar_chart(val[0])
+
+    
 
 #data = load_data()
 
