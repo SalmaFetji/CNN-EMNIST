@@ -23,7 +23,7 @@ MODEL_DIR = os.path.join(os.path.dirname(__file__), 'model.h5')
 if not os.path.isdir(MODEL_DIR):
     os.system('runipy train.ipynb')
 
-model = load_model('C:/Users/User/Desktop/Demo_CNN/model.h5')
+model = load_model('C:/Users/User/Desktop/Demo_CNN/data/model.h5')
 # st.markdown('<style>body{color: White; background-color: DarkSlateGrey}</style>', unsafe_allow_html=True)
 
 st.title('My Digit Recognizer')
