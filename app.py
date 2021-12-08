@@ -20,8 +20,8 @@ def viz_num(num):
 
 
 MODEL_DIR = os.path.join(os.path.dirname(__file__), 'model.h5')
-if not os.path.isdir(MODEL_DIR):
-    os.system('runipy train.ipynb')
+#if not os.path.isdir(MODEL_DIR):
+    #os.system('runipy train.ipynb')
 
 #model = load_model('C:/Users/User/Desktop/Demo_CNN/data/model.h5')
 
