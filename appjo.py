@@ -13,8 +13,6 @@ from streamlit_drawable_canvas import st_canvas
 
 from random import randrange
 
-#MODEL_DIR = os.path.join(os.path.dirname('__file__'), 'model.h5')
-
 ### Visualization function ###
 def viz_num(num):
     #Reshape the 768 values to a 28x28 image
@@ -25,8 +23,6 @@ def viz_num(num):
     fig.show()
     return fig
 
-# def increment(result):
-#     st.session_state.{result} += 1
 
 ### Load / Preprocess / Predict test.csv dataset ###
 
